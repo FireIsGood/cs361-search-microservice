@@ -7,6 +7,14 @@ A Flask microservice to search a pre-determined list of entries.
 Search results are loaded from a plain text file given at startup. If no file is selected upon startup, a default demo
 file will be used.
 
+File lists are regular newline separated for each term:
+
+```text
+sun
+sunny
+Sunday
+```
+
 ## API
 
 Routes:
@@ -97,6 +105,9 @@ source env/bin/activate
 Run the program:
 
 ```bash
+# Uses the default examples.txt
 python3 src/main.py
 
+# Loads the file list read.txt
+python3 src/main.py read.txt
 ```
