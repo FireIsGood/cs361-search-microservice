@@ -17,9 +17,9 @@ def load_search_values():
     if len(sys.argv) > 1:
         file_path = sys.argv[1]
 
-        with open(file_path, "r") as file:
-            global search_values
-            search_values = file.read().splitlines()
+    with open(file_path, "r") as file:
+        global search_values
+        search_values = file.read().splitlines()
 
 @app.route("/search", methods=["GET"])
 def search():
