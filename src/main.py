@@ -1,4 +1,5 @@
-from flask import Flask
+from typing import Dict
+from flask import Flask, request
 import sys
 
 app = Flask(__name__)
@@ -21,33 +22,25 @@ def load_search_values():
         global search_values
         search_values = file.read().splitlines()
 
-@app.route("/search", methods=["GET"])
-def search():
-    data= request.args
-    query = request.args.get("query", "")
-    caseless_query = query.lower()
-    
-    case_option = data.get("caseSensitive", "false") # If none in URL, then the default is false
-    case_sensitive = case_option.lower() == "true" 
-    req_options = {
-        "caseSensitive":case_sensitive
-    }
 
+@app.route("/search", methods=["POST"])
+def search():
+    data: Dict = request.get_json()
+    query = data.get("query", "")
+    options = data.get("options", {})
+
+    case_sensitive = options.get("caseSensitive", True)
+    caseless_query = query.lower()
     results = []
-    for line in search_values:   #search Iteration
-        if case_sensitive:        # Case sensitivity true
+    for line in search_values:  # search Iteration
+        if case_sensitive:  # Case sensitivity true
             if query in line:
                 results.append(line)
-        else:                    # Case sensitive false
+        else:  # Case sensitive false
             if caseless_query in line.lower():
                 results.append(line)
-                
-    return {
-        "query": query,
-        "options": req_options,
-        "results": results
-    }
-    
+
+    return {"query": query, "options": options, "results": results}
 
 
 def main():
