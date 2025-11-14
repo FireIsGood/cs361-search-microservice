@@ -1,4 +1,3 @@
-from typing import Dict
 from flask import Flask, request
 import sys
 
