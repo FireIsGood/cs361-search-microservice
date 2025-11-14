@@ -7,12 +7,6 @@ app = Flask(__name__)
 search_values: list[str] = []
 
 
-@app.route("/")
-def home():
-    # Just for reference
-    return search_values
-
-
 def load_search_values():
     file_path = "./example.txt"  # Default
     if len(sys.argv) > 1:
@@ -21,6 +15,14 @@ def load_search_values():
     with open(file_path, "r") as file:
         global search_values
         search_values = file.read().splitlines()
+
+
+@app.route("/all-values")
+def home():
+    return {
+        "values": search_values,
+        "count": len(search_values),
+    }
 
 
 @app.route("/search", methods=["POST"])
