@@ -27,7 +27,10 @@ def home():
 
 @app.route("/search", methods=["POST"])
 def search():
-    data: Dict = request.get_json()
+    data = request.get_json()
+    if not isinstance(data, dict):
+        return "Invalid request", 400
+
     query = data.get("query", "")
     options = data.get("options", {})
 
