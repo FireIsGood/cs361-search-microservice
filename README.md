@@ -112,12 +112,12 @@ python3 src/main.py
 python3 src/main.py read.txt
 ```
 
-## TESTING WOW
+## UML Diagram of routes
 
 ```mermaid
 sequenceDiagram
-    Alice->>+John: Hello John, how are you?
-    Alice->>+John: John, can you hear me?
-    John-->>-Alice: Hi Alice, I can hear you!
-    John-->>-Alice: I feel great!
+    Client->>+Server: GET /all-values
+    Server->>-Client: read_database_full()
+    Client->>+Server: POST /search {"query"=[text]}
+    Server->>-Client: seach() request = {"query"=[text]}
 ```
