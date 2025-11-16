@@ -1,4 +1,3 @@
-list
-of
-search
-terms
+sun
+sunny
+Sunday
