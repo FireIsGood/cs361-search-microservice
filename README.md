@@ -111,3 +111,13 @@ python3 src/main.py
 # Loads the file list read.txt
 python3 src/main.py read.txt
 ```
+
+## TESTING WOW
+
+```mermaid
+sequenceDiagram
+    Alice->>+John: Hello John, how are you?
+    Alice->>+John: John, can you hear me?
+    John-->>-Alice: Hi Alice, I can hear you!
+    John-->>-Alice: I feel great!
+```
