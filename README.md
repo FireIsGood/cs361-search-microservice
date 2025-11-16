@@ -32,8 +32,8 @@ Given a search query and options, return back the query and options with a list 
 EXAMPLE CALL:
 
 ```py
-requests.post("http://localhost:4820/search", json={"query": "sun"})
-requests.post("http://localhost:4820/search", json={"query": "sun", "options": {"caseSensitive": false}})
+requests.post("http://localhost:5155/search", json={"query": "sun"})
+requests.post("http://localhost:5155/search", json={"query": "sun", "options": {"caseSensitive": false}})
 ```
 
 EXAMPLE OUTPUTS:
